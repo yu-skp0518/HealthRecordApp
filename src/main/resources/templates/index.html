@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>BMI計算</title>
+	<link rel="stylesheet" th:href="@{/css/index.css}">
+	<script th:src="@{/js/index.js}" defer></script>
+</head>
+<body>
+	<main class="page-container">
+		<section class="form-panel">
+			
+			<h1 class="form-title">身体情報入力</h1>
+			<h3>各必須項目を入力してください。</h3>
+			
+		    <form class="user-form"
+						th:action="@{/submit}"
+						th:object="${userForm}"
+						method="post">
+		
+				<div class="form-field">
+			        <label class="form-label" for="date">日付</label>
+			        <input class="form-input" type="date" th:field="*{date}">
+					
+					<span class="form-error"
+						 th:if="${#fields.hasErrors('date')}"
+					     th:errors="*{date}">
+					</span>
+				</div>
+				
+				<div class="form-field">
+			        <label class="form-label" for="lastName">姓</label>
+			        <input class="form-input" type="text" th:field="*{lastName}">
+					
+					<span class="form-error"
+						 th:if="${#fields.hasErrors('lastName')}"
+				     	 th:errors="*{lastName}">
+					</span>
+				</div>
+				
+				<div class="form-field">
+			        <label class="form-label" for="firstName">名</label>
+			        <input class="form-input" type="text" th:field="*{firstName}">
+					
+					<span class="form-error"
+						 th:if="${#fields.hasErrors('firstName')}"
+					     th:errors="*{firstName}">
+					</span>
+				</div>
+				
+				<div class="form-field">
+			        <label class="form-label" for="birthDay">生年月日</label>
+			        <input class="form-input" type="date" th:field="*{birthDay}">
+					
+					<span class="form-error"
+						 th:if="${#fields.hasErrors('birthDay')}"
+				     	 th:errors="*{birthDay}">
+					</span>
+				</div>
+		
+				<div class="form-field">
+			        <label class="form-label" for="height">身長</label>
+			        <input class="form-input" type="text" th:field="*{height}">
+					
+					<span class="form-error"
+						 th:if="${#fields.hasErrors('height')}"
+					     th:errors="*{height}">
+					</span>
+				</div>
+		
+				<div class="form-field">
+			        <label class="form-label" for="weight">体重</label>
+			        <input class="form-input"type="text"  th:field="*{weight}">
+					
+					<span class="form-error"
+						 th:if="${#fields.hasErrors('weight')}"
+					     th:errors="*{weight}">
+					</span>
+				</div>
+		
+		        <button class="submit-button" type="submit">送信</button>
+		    </form>
+		</section>
+	</main>
+</body>
+</html>

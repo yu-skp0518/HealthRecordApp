@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>計算結果</title>
+</head>
+<body>
+    <h1>計算結果</h1>
+
+    <p>
+        姓：
+        <span th:text="${userForm.lastName}"></span>
+    </p>
+
+    <p>
+        名：
+        <span th:text="${userForm.firstName}"></span>
+    </p>
+
+    <p>
+        フルネーム：
+        <span th:text="${fullName}"></span>
+    </p>
+
+    <a href="/">入力画面へ戻る</a>
+</body>
+</html>
