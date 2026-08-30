@@ -80,7 +80,7 @@ public class HealthRecordController {
 		    return "redirect:/";
 		}
 		
-		// セッションから計算結果を受取
+		//	セッションから計算結果を受取
 		HealthRecordResult result = (HealthRecordResult)session.getAttribute("result");
 		
 		// F5対策（resultがない場合は入力画面に遷移）

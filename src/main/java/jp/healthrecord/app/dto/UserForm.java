@@ -5,9 +5,10 @@ import java.time.LocalDate;
 
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.PastOrPresent;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -30,12 +31,23 @@ public class UserForm {
 	/* 名 */
 	@NotBlank(message="名を入力してください")
 	private String firstName;
+	
+	/* 生年月日（年）*/
+	@NotNull(message="生年月日の年を入力してください")
+	@Min(value=1900, message="年を正しく入力してください")
+	private Integer birthYear;
 
-	/* 生年月日 */
-	@NotNull(message="生年月日を入力してください")
-	@Past(message="生年月日は過去の日付を入力してください")
-	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-	private LocalDate birthDay;
+	/* 生年月日（月）*/
+	@NotNull(message="生年月日の月を入力してください")
+	@Min(value=1)
+	@Max(value=12)
+	private Integer birthMonth;
+	
+	/* 生年月日（日）*/
+	@NotNull(message="生年月日の日を入力してください")
+	@Min(value=1)
+	@Max(value=31)
+	private Integer birthDay;
 	
 	/* 身長 */
 	@NotNull(message="身長を入力してください")

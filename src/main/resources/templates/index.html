@@ -30,7 +30,8 @@
 				
 				<div class="form-field">
 			        <label class="form-label" for="lastName">姓</label>
-			        <input class="form-input" type="text" th:field="*{lastName}">
+			        <input class="form-input" type="text"
+						th:field="*{lastName}" placeholder="例）けんこう">
 					
 					<span class="form-error"
 						 th:if="${#fields.hasErrors('lastName')}"
@@ -40,7 +41,8 @@
 				
 				<div class="form-field">
 			        <label class="form-label" for="firstName">名</label>
-			        <input class="form-input" type="text" th:field="*{firstName}">
+			        <input class="form-input" type="text"
+						th:field="*{firstName}" placeholder="例）たろう">
 					
 					<span class="form-error"
 						 th:if="${#fields.hasErrors('firstName')}"
@@ -48,15 +50,43 @@
 					</span>
 				</div>
 				
-				<div class="form-field">
-			        <label class="form-label" for="birthDay">生年月日</label>
-			        <input class="form-input" type="date" th:field="*{birthDay}">
+				<fieldset class="form-field">
+			        <legend class="form-label">生年月日</legend>
+					
+					<div class="birth-date">
+						<select th:field="*{birthYear}">
+							<option value="">---</option>
+							<option th:each="year : ${#numbers.sequence(1940, 2026)}"
+										 th:value="${year}"
+										 th:text="${year}">
+							</option>
+						</select>
+						<span>年</span>
+						
+						<select th:field="*{birthMonth}">
+							<option value="">---</option>
+							<option th:each="month : ${#numbers.sequence(1, 12)}"
+										 th:value="${month}"
+										 th:text="${month}">
+							</option>
+						</select>
+						<span>月</span>
+						
+						<select th:field="*{birthDay}">
+							<option value="">---</option>
+							<option th:each="day : ${#numbers.sequence(1, 31)}"
+										th:value="${day}"
+										th:text="${day}">
+							</option>
+						</select>
+						<span>日</span>
+					</div>
 					
 					<span class="form-error"
 						 th:if="${#fields.hasErrors('birthDay')}"
 				     	 th:errors="*{birthDay}">
 					</span>
-				</div>
+				</fieldset>
 		
 				<div class="form-field">
 			        <label class="form-label" for="height">身長</label>
