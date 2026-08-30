@@ -3,11 +3,12 @@ package jp.healthrecord.app.dto;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.PastOrPresent;
-import jakarta.validation.constraints.Positive;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -38,11 +39,13 @@ public class UserForm {
 	
 	/* 身長 */
 	@NotNull(message="身長を入力してください")
-	@Positive(message="身長は0より大きい値を入力してください")
+	@DecimalMin(value = "50")
+	@DecimalMax(value = "250")
 	private BigDecimal height;
 	
 	/* 体重 */
 	@NotNull(message="体重を入力してください")
-	@Positive(message="体重は0より大きい値を入力してください")
+	@DecimalMin(value = "20")
+	@DecimalMax(value = "300"	)
 	private BigDecimal weight;
 }

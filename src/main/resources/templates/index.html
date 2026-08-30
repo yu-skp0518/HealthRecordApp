@@ -60,7 +60,8 @@
 		
 				<div class="form-field">
 			        <label class="form-label" for="height">身長</label>
-			        <input class="form-input" type="text" th:field="*{height}">
+			        <input class="form-input" type="number"
+						th:field="*{height}" step="0.1" min="50" max="250" inputmode="decimal">
 					
 					<span class="form-error"
 						 th:if="${#fields.hasErrors('height')}"
@@ -70,7 +71,8 @@
 		
 				<div class="form-field">
 			        <label class="form-label" for="weight">体重</label>
-			        <input class="form-input"type="text"  th:field="*{weight}">
+			        <input class="form-input"type="number" 
+						th:field="*{weight}" step="0.1" min="20" max="300" inputmode="decimal">
 					
 					<span class="form-error"
 						 th:if="${#fields.hasErrors('weight')}"

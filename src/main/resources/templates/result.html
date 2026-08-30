@@ -9,20 +9,25 @@
     <h1>計算結果</h1>
 
     <p>
-        姓：
-        <span th:text="${userForm.lastName}"></span>
+        あなたの名前：
+        <span th:text="${result.fullName}"></span>
     </p>
 
     <p>
-        名：
-        <span th:text="${userForm.firstName}"></span>
+        身長：
+        <span th:text="${result.height}"></span>
     </p>
 
     <p>
-        フルネーム：
-        <span th:text="${fullName}"></span>
+        体重：
+        <span th:text="${result.weight}"></span>
     </p>
 
-    <a href="/">入力画面へ戻る</a>
+    <p>
+        BMI：
+        <span th:text="${result.bmi}"></span>
+    </p>
+
+    <a th:href="@{/index}">入力画面へ戻る</a>
 </body>
 </html>
